@@ -23,8 +23,8 @@ def findARestaurant(mealType, location):
 		# 2.  Use foursquare API to find a nearby restaurant with the latitude, longitude, and mealType strings.
 		# HINT: format for url will be something like https://api.foursquare.com/v2/venues/search?client_id=CLIENT_ID&client_secret=CLIENT_SECRET&v=20130815&ll=40.7,-74&query=sushi
 
-		client_id = "QJZVRPS4IUK4CRDAPQUQMMCYX5N5OBC22N2J43YZVWZX2RV4"
-		client_secret = "GBLKKUNFWF2NSQJ04EXEGHCBE1EEVUO1GTFQOK3EGGDAF1QL"
+		client_id = "PASTE_YOUR_CODE_HERE"
+		client_secret = "PASTE_YOUR_CODE_HERE"
 		meal = mealType.replace(" ", "+")
 		url = ("https://api.foursquare.com/v2/venues/search?client_id=%s&client_secret=%s&v=20130815&ll=%s&query=%s" % (
 		client_id, client_secret, geocode, meal))
