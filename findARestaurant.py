@@ -12,8 +12,8 @@ import codecs
 sys.stdout = codecs.getwriter('utf8')(sys.stdout)
 sys.stderr = codecs.getwriter('utf8')(sys.stderr)
 
-foursquare_client_id = "PASTE_YOUR_ID_HERE"
-foursquare_client_secret = "YOUR_SECRET_HERE"
+# foursquare_client_id = "QJZVRPS4IUK4CRDAPQUQMMCYX5N5OBC22N2J43YZVWZX2RV4"
+# foursquare_client_secret = "GBLKKUNFWF2NSQJ04EXEGHCBE1EEVUO1GTFQOK3EGGDAF1QL"
 
 
 def findARestaurant(mealType, location):
@@ -23,15 +23,14 @@ def findARestaurant(mealType, location):
 		# 2.  Use foursquare API to find a nearby restaurant with the latitude, longitude, and mealType strings.
 		# HINT: format for url will be something like https://api.foursquare.com/v2/venues/search?client_id=CLIENT_ID&client_secret=CLIENT_SECRET&v=20130815&ll=40.7,-74&query=sushi
 
-		client_id = "PASTE_YOUR_CODE_HERE"
-		client_secret = "PASTE_YOUR_CODE_HERE"
+		client_id = "QJZVRPS4IUK4CRDAPQUQMMCYX5N5OBC22N2J43YZVWZX2RV4"
+		client_secret = "GBLKKUNFWF2NSQJ04EXEGHCBE1EEVUO1GTFQOK3EGGDAF1QL"
 		meal = mealType.replace(" ", "+")
 		url = ("https://api.foursquare.com/v2/venues/search?client_id=%s&client_secret=%s&v=20130815&ll=%s&query=%s" % (
 		client_id, client_secret, geocode, meal))
 
 		h = httplib2.Http()
 		result = json.loads(h.request(url, 'GET')[1])
-
 		if result['response']['venues']:
 			# 3. Grab the first restaurant
 			restaurant = result['response']['venues'][0]

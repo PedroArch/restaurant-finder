@@ -22,7 +22,7 @@
 * 0.0.2
    * 
 * 0.0.1
-   * first version
+   * Still working on it
 
 ## Meta
 
