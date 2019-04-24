@@ -6,7 +6,7 @@
 
 ## Requirements
 - Python 2.7
-- 
+- sqlalchemy
 
 ## Development setup
 
@@ -19,8 +19,10 @@
 
 ## Release History
 
-* 0.0.2
-   * 
+* 0.0.3
+   * New features:
+       * Show all restaurants
+       * Create new restaurant function
 * 0.0.1
    * Still working on it
 
