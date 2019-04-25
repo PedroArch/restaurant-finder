@@ -52,17 +52,23 @@ def all_restaurants_handler():
 @app.route('/restaurants/<int:id>', methods=['GET', 'PUT', 'DELETE'])
 def restaurant_handler(id):
     if request.method == 'GET':
-        pass
-    if request.method == 'PUT':
-        pass
-    if request.method == 'DELETE':
-        pass
+        return getRestaurant(id)
 
+    elif request.method == 'PUT':
+        name = request.args.get("name", "")
+        address = request.args.get("address", "")
+        image = request.args.get("image", "")
+
+        return updateRestaurant(id, name, address, image)
+
+    elif request.method == 'DELETE':
+        return deleteRestaurant(id)
 
 
 def getAllRestaurants():
     restaurants = session.query(Restaurant).all()
-    return jsonify(Restaurants=[i.serialize for i in restaurants])
+    return jsonify(restaurants=[i.serialize for i in restaurants])
+
 
 def newRestaurant(name, address, image):
     restaurant = Restaurant(restaurant_name=name,
@@ -72,8 +78,40 @@ def newRestaurant(name, address, image):
     session.add(restaurant)
     session.commit()
 
-    return jsonify(Restaurant=restaurant.serialize)
+    return jsonify(restaurant=restaurant.serialize)
 
+
+def getRestaurant(id):
+
+    restaurant = session.query(Restaurant).filter_by(id=id).one()
+
+    return jsonify(restaurant.serialize)
+
+
+def updateRestaurant(id, name, address, image):
+
+    restaurant = session.query(Restaurant).filter_by(id=id).one()
+
+    if not name:
+        restaurant.name = name
+    if not address:
+        restaurant.address = address
+    if not image:
+        restaurant.image = image
+
+    session.add(restaurant)
+    session.commit()
+
+    return jsonify(restaurant=restaurant.serialize)
+
+def deleteRestaurant(id):
+
+    restaurant = session.query(Restaurant).filter_by(id=id).one()
+
+    session.delete(restaurant)
+    session.commit()
+
+    return "Restaurant with id %s deleted" % id
 
 if __name__ == '__main__':
     app.debug = True
