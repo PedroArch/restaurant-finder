@@ -18,7 +18,11 @@
 
 
 ## Release History
-
+* 0.0.6
+    * New features:
+       * Show a specific restaurants
+       * Update restaurant function
+       * Delete restaurant function   
 * 0.0.3
    * New features:
        * Show all restaurants
