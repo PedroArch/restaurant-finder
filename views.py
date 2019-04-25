@@ -11,9 +11,9 @@ from sqlalchemy import create_engine
 import sys
 import codecs
 
+
 sys.stdout = codecs.getwriter('utf8')(sys.stdout)
 sys.stderr = codecs.getwriter('utf8')(sys.stderr)
-
 reload(sys)
 sys.setdefaultencoding('utf8')
 
@@ -41,11 +41,14 @@ def all_restaurants_handler():
 
         restaurant = findARestaurant(mealType, location)
 
-        name = restaurant['name']
-        address = restaurant['address']
-        image = restaurant['image']
+        if restaurant != "No Restaurant Found":
+            name = restaurant['name']
+            address = restaurant['address']
+            image = restaurant['image']
 
-        return newRestaurant(name, address, image)
+            return newRestaurant(name, address, image)
+        else:
+            return jsonify({"error":"No Restaurants Found for %s in %s" % (mealType, location)})
 
 
 
@@ -85,21 +88,20 @@ def getRestaurant(id):
 
     restaurant = session.query(Restaurant).filter_by(id=id).one()
 
-    return jsonify(restaurant.serialize)
+    return jsonify(restaurant=restaurant.serialize)
 
 
 def updateRestaurant(id, name, address, image):
 
     restaurant = session.query(Restaurant).filter_by(id=id).one()
 
-    if not name:
+    if name:
         restaurant.name = name
-    if not address:
+    if address:
         restaurant.address = address
-    if not image:
+    if image:
         restaurant.image = image
 
-    session.add(restaurant)
     session.commit()
 
     return jsonify(restaurant=restaurant.serialize)
