@@ -18,9 +18,9 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 
-foursquare_client_id = 'QJZVRPS4IUK4CRDAPQUQMMCYX5N5OBC22N2J43YZVWZX2RV4'
-foursquare_client_secret = 'GBLKKUNFWF2NSQJ04EXEGHCBE1EEVUO1GTFQOK3EGGDAF1QL'
-google_api_key = 'AIzaSyApIVwdVD88sZsq2ePBgN5U-u0f8piwnCw'
+foursquare_client_id = 'PASTE_HERE'
+foursquare_client_secret = 'PASTE_HERE'
+google_api_key = 'PASTE_HERE'
 
 engine = create_engine('sqlite:///restaurants.db')
 
