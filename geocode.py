@@ -5,7 +5,7 @@ import json
 # Google Maps to convert a location into Latitute/Longitute coordinates
 def getGeocodeLocation(inputString):
 
-    google_api_key = "AIzaSyApIVwdVD88sZsq2ePBgN5U-u0f8piwnCw"
+    google_api_key = "PASTE-HERE"
     locationString = inputString.replace(" ", "+")
     url = ('https://maps.googleapis.com/maps/api/geocode/json?address=%s&key=%s' % (locationString, google_api_key))
     h = httplib2.Http()
